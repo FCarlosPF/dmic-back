@@ -9,20 +9,19 @@ import { Catalogo } from './catalogo/entities/catalogo.entity';
 
 @Module({
   imports: [
-     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'pruebita_nest',
-      entities: ['dist/**/*.entity.{ts,js}'],
-      synchronize: true
-     })
-    ,ConfigModule.forRoot({
-      envFilePath: `.dev.env`,
+    ConfigModule.forRoot({
       isGlobal: true,
     }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: process.env.MYSQL_HOST,
+      port: parseInt(process.env.MYSQL_PORT),
+      username: process.env.MYSQL_USERNAME,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+      entities: ['dist/**/*.entity.{ts,js}'],
+      synchronize: true
+     }),
     UsersModule,
     AuthModule,
     CatalogoModule
