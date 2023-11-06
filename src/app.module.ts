@@ -20,7 +20,15 @@ import { Catalogo } from './catalogo/entities/catalogo.entity';
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
       entities: ['dist/**/*.entity.{ts,js}'],
-      synchronize: true
+      synchronize: true,
+      ssl: process.env.MYSQL_SSL === 'true',
+      extra: {
+        ssl:
+          process.env.MYSQL_SSL === 'true' 
+            ? {
+              rejectUnathorized : false
+            } : null,
+      },
      }),
     UsersModule,
     AuthModule,
