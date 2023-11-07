@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: pruebita_nest
-      MYSQL_USERNAME: user_dmic
+      MYSQL_USER: user_dmic
       MYSQL_PASSWORD: root
     volumes:
       - ./mysql:/var/lib/mysql
