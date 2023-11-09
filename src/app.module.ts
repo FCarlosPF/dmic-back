@@ -21,10 +21,10 @@ import { Catalogo } from './catalogo/entities/catalogo.entity';
       database: process.env.POSTGRES_DATABASE,
       entities: ['dist/**/*.entity.{ts,js}'],
       synchronize: true,
-      ssl: process.env.MYSQL_SSL === 'true',
+      ssl: process.env.POSTGRES_SSL === 'true',
       extra: {
         ssl:
-          process.env.MYSQL_SSL === 'true' 
+          process.env.POSTGRES_SSL === 'true' 
             ? {
               rejectUnathorized : false
             } : null,
