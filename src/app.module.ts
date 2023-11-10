@@ -20,15 +20,7 @@ import { Catalogo } from './catalogo/entities/catalogo.entity';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       entities: ['dist/**/*.entity.{ts,js}'],
-      synchronize: true,
-      ssl: process.env.POSTGRES_SSL === 'true',
-      extra: {
-        ssl:
-          process.env.POSTGRES_SSL === 'true' 
-            ? {
-              rejectUnathorized : false
-            } : null,
-      },
+      synchronize: true
      }),
     UsersModule,
     AuthModule,
