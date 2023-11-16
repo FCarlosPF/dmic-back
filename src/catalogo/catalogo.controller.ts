@@ -29,6 +29,7 @@ export class CatalogoController {
     return this.catalogoService.update(+iqms, updateCatalogoDto);
   }
 
+  @Auth(Role.ADMIN)
   @Delete(':iqms')
   remove(@Param('iqms') iqms: string) {
     return this.catalogoService.remove(+iqms);
