@@ -12,5 +12,5 @@ export class CreateCatalogoDto {
     molde: string
 
     @IsString()
-    foto: string
+    foto: Buffer
 }
