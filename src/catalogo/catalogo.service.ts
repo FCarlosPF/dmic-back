@@ -20,8 +20,16 @@ export class CatalogoService {
     return await this.catalogoRepository.find();
   }
 
-  async findOne(iqms: number) {
+  async findOneIQMS(iqms: number) {
     const resultados = await this.catalogoRepository.findBy({ iqms });
+    if (resultados.length > 0) {
+      return resultados[0];
+    }
+    return null;
+  }
+
+  async findOneMolde(molde: string) {
+    const resultados = await this.catalogoRepository.findBy({ molde });
     if (resultados.length > 0) {
       return resultados[0];
     }

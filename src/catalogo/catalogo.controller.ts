@@ -20,8 +20,13 @@ export class CatalogoController {
   }
 
   @Get(':iqms')
-  findOne(@Param('iqms') iqms: string) {
-    return this.catalogoService.findOne(+iqms);
+  findOneIQMS(@Param('iqms') iqms: string) {
+    return this.catalogoService.findOneIQMS(+iqms);
+  }
+
+  @Get(':molde')
+  findOneMolde(@Param('molde') molde: string) {
+    return this.catalogoService.findOneMolde(molde);
   }
 
   @Put(':iqms')
