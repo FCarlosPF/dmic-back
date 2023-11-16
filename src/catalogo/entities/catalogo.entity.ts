@@ -12,6 +12,6 @@ export class Catalogo {
     @Column()
     molde: string
 
-    @Column()
-    foto: string
+    @Column({type: 'blob'})
+    foto: Buffer
 }
