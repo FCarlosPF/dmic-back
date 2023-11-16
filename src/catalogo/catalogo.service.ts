@@ -18,17 +18,7 @@ export class CatalogoService {
   }
 
   async findAll() {
-    const catalogos =  await this.catalogoRepository.find();
-
-    const catalogosConImagenesDecodificadas = await Promise.all(
-      catalogos.map(async (catalogo) => {
-        catalogo.imagen = await this.decodeImage(catalogo.imagen);
-        return catalogo;
-      }),
-    );
-
-    return catalogosConImagenesDecodificadas;
-
+    return await this.catalogoRepository.find();
   }
 
   async findOne(iqms: number) {
@@ -47,10 +37,5 @@ export class CatalogoService {
     return await this.catalogoRepository.delete(iqms);
   }
 
-  private async decodeImage(imagen: Buffer): Promise<Buffer> {
-    // Perform decoding operations if necessary
-    // For example, you can use sharp here
-    // Note: Make sure to adjust the logic according to your specific needs
-    return sharp(imagen).resize(200, 200).toBuffer();
-  }
+
 }
