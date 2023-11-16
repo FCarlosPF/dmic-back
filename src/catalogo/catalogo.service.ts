@@ -4,7 +4,6 @@ import { UpdateCatalogoDto } from './dto/update-catalogo.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Catalogo } from './entities/catalogo.entity';
 import { Repository } from 'typeorm';
-import * as sharp from 'sharp';
 
 @Injectable()
 export class CatalogoService {

@@ -12,6 +12,6 @@ export class Catalogo {
     @Column()
     molde: string
 
-    @Column({type: 'mediumblob'})
-    imagen: Buffer
+    @Column()
+    foto: string
 }
