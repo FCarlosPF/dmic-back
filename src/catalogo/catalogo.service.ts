@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateCatalogoDto } from './dto/create-catalogo.dto';
 import { UpdateCatalogoDto } from './dto/update-catalogo.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -21,6 +21,11 @@ export class CatalogoService {
   }
 
   async findOneIQMS(iqms: number) {
+    if (isNaN(iqms)) {
+      throw new BadRequestException('El valor proporcionado no es un número válido.');
+    }
+  
+    
     const resultados = await this.catalogoRepository.findBy({ iqms });
     if (resultados.length > 0) {
       return resultados[0];

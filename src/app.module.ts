@@ -13,7 +13,7 @@ import { Catalogo } from './catalogo/entities/catalogo.entity';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: process.env.POSTGRES_HOST,
       port: parseInt(process.env.POSTGRES_PORT,10),
       username: process.env.POSTGRES_USERNAME,

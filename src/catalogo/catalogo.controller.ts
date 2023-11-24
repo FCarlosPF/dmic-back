@@ -2,8 +2,6 @@ import { Controller, Get, Post, Body, Put , Param, Delete } from '@nestjs/common
 import { CatalogoService } from './catalogo.service';
 import { CreateCatalogoDto } from './dto/create-catalogo.dto';
 import { UpdateCatalogoDto } from './dto/update-catalogo.dto';
-import { Auth } from 'src/auth/decorators/auth.decorator';
-import { Role } from 'src/common/enums/rol.enum';
 
 @Controller('catalogo')
 export class CatalogoController {
@@ -19,13 +17,13 @@ export class CatalogoController {
     return this.catalogoService.findAll();
   }
 
-  @Get(':iqms')
+  @Get('iqms/:iqms')
   findOneIQMS(@Param('iqms') iqms: string) {
     return this.catalogoService.findOneIQMS(+iqms);
   }
 
-  @Get(':molde')
-  findOneMolde(@Param('molde') molde: string) {
+  @Get('molde/:molde')
+  async findOneMolde(@Param('molde') molde: string) {
     return this.catalogoService.findOneMolde(molde);
   }
 
