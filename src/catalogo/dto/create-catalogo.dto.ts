@@ -1,4 +1,4 @@
-import { IsString, IsNumber, MinLength } from 'class-validator';
+import { IsString, IsNumber, MinLength, IsOptional  } from 'class-validator';
 
 export class CreateCatalogoDto {
     @IsNumber()
@@ -11,6 +11,6 @@ export class CreateCatalogoDto {
     @IsString()
     molde: string
 
-    @IsString()
-    foto: string
+    @IsOptional()
+    imagen?: Buffer | null
 }
