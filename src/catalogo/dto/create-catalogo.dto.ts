@@ -11,6 +11,6 @@ export class CreateCatalogoDto {
     @IsString()
     molde: string
 
-    @IsOptional()
-    imagen?: Buffer | null
+    @IsString()
+    imagen: string
 }

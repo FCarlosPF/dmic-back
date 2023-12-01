@@ -3,7 +3,7 @@ import { CatalogoService } from './catalogo.service';
 import { CreateCatalogoDto } from './dto/create-catalogo.dto';
 import { UpdateCatalogoDto } from './dto/update-catalogo.dto';
 
-@Controller('catalogo')
+@Controller('catalogoChina')
 export class CatalogoController {
   constructor(private readonly catalogoService: CatalogoService) {}
 
