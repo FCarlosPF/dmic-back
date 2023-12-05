@@ -1,14 +1,17 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { Vision1Service } from './vision1.service';
+import { Express } from 'express';
 
 @Controller('images')
 export class Vision1Controller {
   constructor(private readonly visionService: Vision1Service) {}
 
-  @Get('detect-text')
-  async detectTextFromURL(@Query('imageUrl') imageUrl: string): Promise<string[]> {
+  @Post('detect-text')
+  @UseInterceptors(FileInterceptor('image'))
+  async detectTextFromImage(@UploadedFile() imageFile: Express.Multer.File): Promise<string[]> {
     try {
-      const textInImage = await this.visionService.detectTextFromURL(imageUrl);
+      const textInImage = await this.visionService.detectTextFromImage(imageFile);
       return textInImage;
     } catch (error) {
       console.error('Error al procesar la imagen:', error);
