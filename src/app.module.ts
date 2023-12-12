@@ -6,7 +6,6 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './users/entities/user.entity';
 import { CatalogoModule } from './catalogo/catalogo.module';
 import { Catalogo } from './catalogo/entities/catalogo.entity';
-import { TrazabilidadChinaModule } from './trazabilidad-china/trazabilidad-china.module';
 
 @Module({
   imports: [
@@ -25,8 +24,7 @@ import { TrazabilidadChinaModule } from './trazabilidad-china/trazabilidad-china
      }),
     UsersModule,
     AuthModule,
-    CatalogoModule,
-    TrazabilidadChinaModule
+    CatalogoModule
   ],
   controllers: [],
   providers: [],
