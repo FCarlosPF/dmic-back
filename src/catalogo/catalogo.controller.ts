@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put , Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put , Param, Delete, NotFoundException } from '@nestjs/common';
 import { CatalogoService } from './catalogo.service';
 import { CreateCatalogoDto } from './dto/create-catalogo.dto';
 import { UpdateCatalogoDto } from './dto/update-catalogo.dto';
@@ -19,7 +19,12 @@ export class CatalogoController {
 
   @Get('iqms/:iqms')
   findOneIQMS(@Param('iqms') iqms: string) {
-    return this.catalogoService.findOneIQMS(+iqms);
+    const catalogo =  this.catalogoService.findOneIQMS(+iqms);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }
+
+    return catalogo;
   }
 
   @Get('molde/:molde')
