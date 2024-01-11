@@ -3,7 +3,7 @@ import { UsersService } from './users.service';
 import { Auth } from '../auth/decorators/auth.decorator';
 import { Role } from '../common/enums/rol.enum';
 
-@Controller('users')
+@Controller('usuarios')
 export class UsersController {
 
     constructor(private readonly usersService : UsersService){}

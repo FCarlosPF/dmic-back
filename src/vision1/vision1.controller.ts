@@ -13,7 +13,6 @@ export class Vision1Controller {
     try {
       let textInImage = await this.visionService.detectTextFromImage(imageFile);
 
-      
       let result = textInImage.join('\n');
 
       const deserializedData: Record<string, string> = {

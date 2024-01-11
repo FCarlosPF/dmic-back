@@ -1,12 +1,11 @@
-import { IsString, IsNumber, MinLength, IsOptional  } from 'class-validator';
+import { IsString, IsNumber, MinLength  } from 'class-validator';
 
 export class CreateCatalogoDto {
     @IsNumber()
-    iqms: number
+    iqms_aka: number
 
-    @IsString()
-    @MinLength(3)
-    familia: string
+    @IsNumber()
+    iqms_dg: number
     
     @IsString()
     molde: string

@@ -6,6 +6,10 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './users/entities/user.entity';
 import { CatalogoModule } from './catalogo/catalogo.module';
 import { Catalogo } from './catalogo/entities/catalogo.entity';
+import { TrazabilidadChinaModule } from './trazabilidad-china/trazabilidad-china.module';
+import { Vision1Module } from './vision1/vision1.module';
+import { ProductoQueretaroModule } from './producto-queretaro/producto-queretaro.module';
+import { TrazabilidadQueretaroModule } from './trazabilidad-queretaro/trazabilidad-queretaro.module';
 
 @Module({
   imports: [
@@ -24,7 +28,11 @@ import { Catalogo } from './catalogo/entities/catalogo.entity';
      }),
     UsersModule,
     AuthModule,
-    CatalogoModule
+    CatalogoModule,
+    TrazabilidadChinaModule,
+    Vision1Module,
+    ProductoQueretaroModule,
+    TrazabilidadQueretaroModule
   ],
   controllers: [],
   providers: [],

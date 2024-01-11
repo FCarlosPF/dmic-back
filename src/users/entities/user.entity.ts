@@ -1,7 +1,7 @@
 import { Role } from "../../common/enums/rol.enum";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name:'users'})
+@Entity({name:'usuarios'})
 export class User {
 
     @PrimaryGeneratedColumn()

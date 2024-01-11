@@ -1,13 +1,13 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity({name : 'catalogo_queretaro'})
+@Entity({name : 'producto_china'})
 export class Catalogo {
 
     @PrimaryColumn()
-    iqms: number
+    iqms_aka: number
     
     @Column()
-    familia: string
+    iqms_dg: number
     
     @Column()
     molde: string

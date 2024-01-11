@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('trazabilidad_china')
-export class TrazabilidadChina {
+@Entity('trazabilidad_queretaro')
+export class TrazabilidadQueretaro {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -20,5 +20,3 @@ export class TrazabilidadChina {
   @Column()
   id_usuario: number;
 }
-
-
