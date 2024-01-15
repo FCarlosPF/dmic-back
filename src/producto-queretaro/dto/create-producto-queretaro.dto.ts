@@ -1,14 +1,17 @@
-import { IsString, IsNumber, MinLength, IsOptional  } from 'class-validator';
-
+import { IsString, IsNumber, MinLength, IsOptional, IsNotEmpty  } from 'class-validator';
+import { Type } from 'class-transformer';
 export class CreateProductoQueretaroDto {
 
     @IsNumber()
+    @Type(() => Number)
     iqms1: number
 
     @IsNumber()
+    @Type(() => Number)
     iqms2: number
 
     @IsNumber()
+    @Type(() => Number)
     iqms3: number
 
     @IsString()
@@ -21,6 +24,6 @@ export class CreateProductoQueretaroDto {
     @IsString()
     molde2: string
 
-    @IsString()
-    foto: string
+    @IsNotEmpty()
+    foto: Buffer
 }

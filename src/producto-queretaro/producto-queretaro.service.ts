@@ -14,7 +14,12 @@ export class ProductoQueretaroService {
   ) {}
 
   async create(createCatalogoDto: CreateProductoQueretaroDto) {
-    return this.catalogoRepository.save(createCatalogoDto);
+    const { foto, ...rest } = createCatalogoDto;
+    const catalogo = this.catalogoRepository.create({
+      ...rest,
+      foto: Buffer.from(foto),
+    });
+    return this.catalogoRepository.save(catalogo);
   }
 
   async findAll() {

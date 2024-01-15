@@ -20,7 +20,7 @@ export class ProductoQueretaro {
   @Column()
   molde2: string;
 
-  @Column()
-  foto: string;
+  @Column({ type: 'longblob' }) 
+  foto: Buffer
 }
 

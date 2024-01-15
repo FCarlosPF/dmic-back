@@ -1,14 +1,23 @@
-import { Controller, Get, Post, Body, Param, Delete, NotFoundException, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, NotFoundException, Put, UseInterceptors, UploadedFile, BadRequestException  } from '@nestjs/common';
 import { ProductoQueretaroService } from './producto-queretaro.service';
 import { CreateProductoQueretaroDto } from './dto/create-producto-queretaro.dto';
 import { UpdateProductoQueretaroDto } from './dto/update-producto-queretaro.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'express';
 
 @Controller('producto-queretaro')
 export class ProductoQueretaroController {
   constructor(private readonly productoQueretaroService: ProductoQueretaroService) {}
 
   @Post()
-  create(@Body() createCatalogoDto: CreateProductoQueretaroDto) {
+  @UseInterceptors(FileInterceptor('image'))
+  async create(@Body() createCatalogoDto: CreateProductoQueretaroDto, @UploadedFile() file: Express.Multer.File) {
+    console.log(file);
+    if (!file) {
+      throw new BadRequestException('No se proporcionó ningún archivo.');
+    } 
+  
+    createCatalogoDto.foto = file.buffer;
     return this.productoQueretaroService.create(createCatalogoDto);
   }
 
