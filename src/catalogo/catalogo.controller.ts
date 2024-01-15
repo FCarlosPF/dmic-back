@@ -1,14 +1,23 @@
-import { Controller, Get, Post, Body, Put , Param, Delete, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put , Param, Delete, NotFoundException, UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { CatalogoService } from './catalogo.service';
 import { CreateCatalogoDto } from './dto/create-catalogo.dto';
 import { UpdateCatalogoDto } from './dto/update-catalogo.dto';
+import { Express } from 'express';
 
 @Controller('catalogoChina')
 export class CatalogoController {
   constructor(private readonly catalogoService: CatalogoService) {}
 
   @Post()
-  create(@Body() createCatalogoDto: CreateCatalogoDto) {
+  @UseInterceptors(FileInterceptor('image'))
+  async create(@Body() createCatalogoDto: CreateCatalogoDto, @UploadedFile() file: Express.Multer.File) {
+    console.log(file);
+    if (!file) {
+      throw new BadRequestException('No se proporcionó ningún archivo.');
+    } 
+  
+    createCatalogoDto.imagen = file.buffer;
     return this.catalogoService.create(createCatalogoDto);
   }
 

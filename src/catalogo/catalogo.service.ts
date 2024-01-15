@@ -13,7 +13,12 @@ export class CatalogoService {
   ) {}
 
   async create(createCatalogoDto: CreateCatalogoDto) {
-    return this.catalogoRepository.save(createCatalogoDto);
+    const { imagen, ...rest } = createCatalogoDto;
+    const catalogo = this.catalogoRepository.create({
+      ...rest,
+      imagen: Buffer.from(imagen), // Convertir la imagen a Buffer antes de almacenarla
+    });
+    return this.catalogoRepository.save(catalogo);
   }
 
   async findAll() {
