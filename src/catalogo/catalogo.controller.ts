@@ -26,15 +26,36 @@ export class CatalogoController {
     return this.catalogoService.findAll();
   }
 
-  @Get('iqms/:iqms')
-  findOneIQMS(@Param('iqms') iqms: string) {
-    const catalogo =  this.catalogoService.findOneIQMS(+iqms);
+  @Get('iqms/:iqms_aka')
+  findOneIQMS_aka(@Param('iqms_aka') iqms: string) {
+    const catalogo =  this.catalogoService.findOneIQMS_aka(+iqms);
     if (!catalogo) {
       throw new NotFoundException('Producto no encontrado');
     }
 
     return catalogo;
   }
+
+  @Get('iqms/:iqms_dg')
+  findOneIQMS_dg(@Param('iqms_dg') iqms: string) {
+    const catalogo =  this.catalogoService.findOneIQMS_dg(+iqms);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }
+
+    return catalogo;
+  }
+
+  //catalogoChina/iqms-search/:iqms_aka/:iqms_dg
+  @Get('iqms-search/:iqms_aka/:iqms_dg')
+async findTwoIQMS(@Param('iqms_aka') iqmsAka: string, @Param('iqms_dg') iqmsDg: string) {
+  const catalogo = this.catalogoService.findTwoIQMS(+iqmsAka, +iqmsDg);
+  if (!catalogo) {
+    throw new NotFoundException('Producto no encontrado');
+  }
+
+  return catalogo;
+}
 
   @Get('molde/:molde')
   async findOneMolde(@Param('molde') molde: string) {

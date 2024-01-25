@@ -26,8 +26,8 @@ export class ProductoQueretaroController {
     return this.productoQueretaroService.findAll();
   }
 
-  @Get('iqms/:iqms')
-  findOneIQMS(@Param('iqms') iqms: string) {
+  @Get('iqms/:iqms1')
+  findOneIQMS1(@Param('iqms1') iqms: string) {
     const catalogo =  this.productoQueretaroService.findOneIQMS1(+iqms);
     if (!catalogo) {
       throw new NotFoundException('Producto no encontrado');
@@ -35,6 +35,63 @@ export class ProductoQueretaroController {
 
     return catalogo;
   }
+  @Get('iqms/:iqms2')
+  findOneIQMS2(@Param('iqms2') iqms: string) {
+    const catalogo =  this.productoQueretaroService.findOneIQMS2(+iqms);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }
+
+    return catalogo;
+  }
+  @Get('iqms/:iqms3')
+  findOneIQMS3(@Param('iqms3') iqms: string) {
+    const catalogo =  this.productoQueretaroService.findOneIQMS3(+iqms);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }
+
+    return catalogo;
+  }
+/*
+  @Get('iqms-two/:iqms1/:iqms2')
+  async findOneIQMS_1_2(@Param('iqms1') iqms1: string, @Param('iqms2') iqms2: string) {
+    const catalogo = this.productoQueretaroService.findOneIQMS_1_2(+iqms1, +iqms2);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }
+    return catalogo;
+  }
+
+  @Get('iqms-two/:iqms1/:iqms3')
+  async findOneIQMS_1_3(@Param('iqms1') iqms1: string, @Param('iqms3') iqms3: string) {
+    const catalogo = this.productoQueretaroService.findOneIQMS_1_3(+iqms1, +iqms3);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }  
+    return catalogo;
+  }
+
+  @Get('iqms-two/:iqms2/:iqms3')
+  async findOneIQMS_2_3(@Param('iqms2') iqms2: string, @Param('iqms3') iqms3: string) {
+    const catalogo = this.productoQueretaroService.findOneIQMS_2_3(+iqms2, +iqms3);
+    if (!catalogo) {
+      throw new NotFoundException('Producto no encontrado');
+    }  
+    return catalogo;
+  }
+
+  ///producto-queretaro/iqms-search/:iqms1/:iqms2/:iqms3
+  @Get('iqms-search/:iqms1/:iqms2/:iqms3')
+async findProductByIQMS(@Param('iqms1') iqms1: string, @Param('iqms2') iqms2: string, @Param('iqms3') iqms3: string) {
+  const catalogo = this.productoQueretaroService.findProductByIQMS(+iqms1, +iqms2, +iqms3);
+  if (!catalogo) {
+    throw new NotFoundException('Producto no encontrado');
+  }
+
+  return catalogo;
+}*/
+
 
   @Get('molde/:molde')
   async findOneMolde(@Param('molde') molde: string) {
